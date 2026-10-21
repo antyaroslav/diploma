@@ -1,0 +1,28 @@
+package ru.edu.qamid.repository.newsRepository
+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import ru.edu.qamid.dto.News
+import ru.edu.qamid.dto.NewsWithCategory
+import ru.edu.qamid.dto.User
+
+interface NewsRepository {
+    val newsList: List<News>
+    suspend fun refreshNews()
+    suspend fun modificationOfExistingNews(newsItem: News): News
+    suspend fun createNews(newsItem: News): News
+    suspend fun removeNewsItemById(id: Int)
+    fun getAllNewsCategories(): Flow<List<News.Category>>
+    suspend fun saveNewsCategories(listNewsCategories: List<News.Category>)
+    fun getAllNews(
+        coroutineScope: CoroutineScope,
+        publishEnabled: Boolean? = null,
+        publishDateBefore: Long? = null,
+        newsCategoryId: Int? = null,
+        dateStart: Long? = null,
+        dateEnd: Long? = null,
+        status: Boolean? = null
+    ): Flow<List<NewsWithCategory>>
+
+    suspend fun changeIsOpen(newsItem: News)
+}
