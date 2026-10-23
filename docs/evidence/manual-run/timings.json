@@ -1,0 +1,879 @@
+{
+  "title": "Ручной прогон: предварительный UI-замер",
+  "human_manual_timing_confirmed": false,
+  "measurement_method": "Пошаговый прогон UI с программным вводом данных и управлением эмулятором, без запуска Espresso-тестов. Каждый сценарий выполнялся отдельно через экран приложения; время измерялось time.monotonic от начала подготовки сценария до фиксации результата и удаления собственных данных. Время самостоятельного прохождения человеком не измерялось.",
+  "timing_scope": "Время включает нормализацию сессии (выход при наличии авторизации), ввод данных, управление эмулятором, наблюдение, проверки результата, снимки экрана и очистку собственных новостей. Интервалы между сценариями в сумму не входят.",
+  "limitations": [
+    "Замер не подтверждает скорость ручного прохождения человеком: включает программный ввод, управление эмулятором и фиксацию результатов.",
+    "Это один замер каждого сценария, без статистической оценки разброса.",
+    "Две подготовительные и исследовательские попытки приведены отдельно; для TC-002 и TC-041 в сравнение вошли реальные повторные замеры после подготовки."
+  ],
+  "environment": {
+    "android_api": 36,
+    "device_type": "эмулятор",
+    "screen_resolution": "1080x2400",
+    "application_id": "ru.edu.qamid",
+    "ui_language": "English",
+    "device_calendar_date": "22.10.2026"
+  },
+  "canonical_cases": [
+    {
+      "case_id": "TC-002",
+      "name": "Успешная авторизация: повтор после подготовки",
+      "related_test_method": "AuthTests.validCredentialsOpenMainScreen",
+      "attempt": 2,
+      "started_at_utc": "2026-10-22T13:33:22.100636+00:00",
+      "finished_at_utc": "2026-10-22T13:33:31.623855+00:00",
+      "monotonic_start_seconds": 547641.515,
+      "monotonic_end_seconds": 547651.031,
+      "duration_seconds": 9.516,
+      "status": "passed",
+      "observation": "После нормализации сессии корректные данные открывают главный экран",
+      "steps": [
+        {
+          "elapsed_seconds": 0.11,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 2.5,
+          "action": "Нажать Log out"
+        },
+        {
+          "elapsed_seconds": 4.953,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.281,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.422,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.75,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.875,
+          "action": "Нажать enter_button"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/auth-valid-comparison.png"
+      ],
+      "repeated_after_preparation": true
+    },
+    {
+      "case_id": "TC-003",
+      "name": "Пустые поля авторизации",
+      "related_test_method": "AuthTests.emptyCredentialsRemainOnAuthorizationScreen",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:24:12.787790+00:00",
+      "finished_at_utc": "2026-10-22T13:24:20.642321+00:00",
+      "monotonic_start_seconds": 547092.203,
+      "monotonic_end_seconds": 547100.062,
+      "duration_seconds": 7.859,
+      "status": "passed",
+      "observation": "Пустые поля; после SIGN IN сохранен экран Authorization, главный экран отсутствует",
+      "steps": [
+        {
+          "elapsed_seconds": 0.109,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 2.64,
+          "action": "Нажать Log out"
+        },
+        {
+          "elapsed_seconds": 5.125,
+          "action": "Нажать enter_button"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/auth-empty.png"
+      ],
+      "repeated_after_preparation": false
+    },
+    {
+      "case_id": "TC-014",
+      "name": "Выход из учетной записи",
+      "related_test_method": "AuthTests.logoutReturnsToAuthorization",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:24:26.112130+00:00",
+      "finished_at_utc": "2026-10-22T13:24:36.955159+00:00",
+      "monotonic_start_seconds": 547105.531,
+      "monotonic_end_seconds": 547116.375,
+      "duration_seconds": 10.844,
+      "status": "passed",
+      "observation": "После авторизации и Log out открыт экран Authorization с пустыми полями",
+      "steps": [
+        {
+          "elapsed_seconds": 2.234,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 2.547,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 2.734,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 3.14,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 3.281,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 5.859,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 8.187,
+          "action": "Нажать Log out"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/logout.png"
+      ],
+      "repeated_after_preparation": false
+    },
+    {
+      "case_id": "TC-057",
+      "name": "Наша миссия: восемь цитат",
+      "related_test_method": "MissionTests.missionContainsEightQuotes",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:24:37.016352+00:00",
+      "finished_at_utc": "2026-10-22T13:25:06.083632+00:00",
+      "monotonic_start_seconds": 547116.437,
+      "monotonic_end_seconds": 547145.5,
+      "duration_seconds": 29.063,
+      "status": "passed",
+      "observation": "В разделе Love is all присутствуют восемь цитат; проверены верхняя и нижняя части списка",
+      "steps": [
+        {
+          "elapsed_seconds": 2.219,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 2.547,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 2.75,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 3.141,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 3.281,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 5.625,
+          "action": "Нажать our_mission_image_button"
+        },
+        {
+          "elapsed_seconds": 26.344,
+          "action": "Прокрутить экран"
+        },
+        {
+          "elapsed_seconds": 29.0,
+          "action": "Прокруткой проверены заголовок Love is all и все восемь отдельных цитат"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/mission-top.png",
+        "docs/evidence/manual-run/mission-bottom.png"
+      ],
+      "repeated_after_preparation": false
+    },
+    {
+      "case_id": "TC-058",
+      "name": "Раскрытие и сворачивание первой цитаты",
+      "related_test_method": "MissionTests.firstQuoteCanBeExpandedAndCollapsed",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:25:06.155469+00:00",
+      "finished_at_utc": "2026-10-22T13:25:28.177369+00:00",
+      "monotonic_start_seconds": 547145.578,
+      "monotonic_end_seconds": 547167.593,
+      "duration_seconds": 22.015,
+      "status": "passed",
+      "observation": "Описание первой цитаты появляется после нажатия и скрывается после повторного",
+      "steps": [
+        {
+          "elapsed_seconds": 0.109,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 2.484,
+          "action": "Нажать Log out"
+        },
+        {
+          "elapsed_seconds": 4.843,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.203,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.359,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.75,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.89,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 8.312,
+          "action": "Нажать our_mission_image_button"
+        },
+        {
+          "elapsed_seconds": 10.687,
+          "action": "Нажать our_mission_item_material_card_view"
+        },
+        {
+          "elapsed_seconds": 19.328,
+          "action": "Нажать our_mission_item_material_card_view"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/quote-expanded.png",
+        "docs/evidence/manual-run/quote-collapsed.png"
+      ],
+      "repeated_after_preparation": false
+    },
+    {
+      "case_id": "TC-027",
+      "name": "Фильтр новостей только с начальной датой",
+      "related_test_method": "NewsTests.incompleteDateRangeIsRejected",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:25:28.238062+00:00",
+      "finished_at_utc": "2026-10-22T13:26:05.214312+00:00",
+      "monotonic_start_seconds": 547167.656,
+      "monotonic_end_seconds": 547204.64,
+      "duration_seconds": 36.984,
+      "status": "passed",
+      "observation": "При начальной дате 22.10.2026 и пустой конечной дате показано Wrong period; фильтр сохранен, затем отменен",
+      "steps": [
+        {
+          "elapsed_seconds": 0.109,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 2.406,
+          "action": "Нажать Log out"
+        },
+        {
+          "elapsed_seconds": 4.687,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.031,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.187,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.547,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.719,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 8.25,
+          "action": "Нажать main_menu_image_button"
+        },
+        {
+          "elapsed_seconds": 14.609,
+          "action": "Нажать News"
+        },
+        {
+          "elapsed_seconds": 16.953,
+          "action": "Нажать news_filter_button"
+        },
+        {
+          "elapsed_seconds": 19.203,
+          "action": "Нажать filter_news_date_start_edit_text"
+        },
+        {
+          "elapsed_seconds": 27.422,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 29.765,
+          "action": "Нажать filter_news_apply_button"
+        },
+        {
+          "elapsed_seconds": 32.359,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 34.672,
+          "action": "Нажать filter_news_cancel_button"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/news-incomplete-period.png"
+      ],
+      "repeated_after_preparation": false
+    },
+    {
+      "case_id": "TC-041",
+      "name": "Создание и удаление собственной новости: повтор",
+      "related_test_method": "NewsTests.newNewsItemAppearsInControlPanel",
+      "attempt": 2,
+      "started_at_utc": "2026-10-22T13:33:31.684452+00:00",
+      "finished_at_utc": "2026-10-22T13:35:18.895439+00:00",
+      "monotonic_start_seconds": 547651.093,
+      "monotonic_end_seconds": 547758.312,
+      "duration_seconds": 107.219,
+      "status": "passed",
+      "observation": "Создана и проверена QA_DIPLOMA_MANUAL_33e9edae-4b54-469b-a9aa-8f03af6d92a0; после подтверждения удаления отсутствует, прежние карточки сохранены",
+      "steps": [
+        {
+          "elapsed_seconds": 0.125,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 2.563,
+          "action": "Нажать Log out"
+        },
+        {
+          "elapsed_seconds": 4.907,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.422,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.61,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 6.078,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 6.266,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 8.657,
+          "action": "Нажать main_menu_image_button"
+        },
+        {
+          "elapsed_seconds": 11.094,
+          "action": "Нажать News"
+        },
+        {
+          "elapsed_seconds": 13.485,
+          "action": "Нажать news_edit_button"
+        },
+        {
+          "elapsed_seconds": 38.094,
+          "action": "Нажать add_news_image_view"
+        },
+        {
+          "elapsed_seconds": 40.422,
+          "action": "Нажать text_input_end_icon"
+        },
+        {
+          "elapsed_seconds": 41.516,
+          "action": "Нажать координаты 400,700"
+        },
+        {
+          "elapsed_seconds": 43.86,
+          "action": "Нажать news_title_edit_text"
+        },
+        {
+          "elapsed_seconds": 45.328,
+          "action": "Заполнить поле news_title_edit_text"
+        },
+        {
+          "elapsed_seconds": 45.469,
+          "action": "Нажать news_publish_date_edit_text"
+        },
+        {
+          "elapsed_seconds": 48.047,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 50.469,
+          "action": "Нажать news_publish_time_edit_text"
+        },
+        {
+          "elapsed_seconds": 52.922,
+          "action": "Нажать toggle_mode"
+        },
+        {
+          "elapsed_seconds": 55.563,
+          "action": "Нажать input_hour"
+        },
+        {
+          "elapsed_seconds": 55.813,
+          "action": "Заполнить поле input_hour"
+        },
+        {
+          "elapsed_seconds": 56.032,
+          "action": "Нажать input_minute"
+        },
+        {
+          "elapsed_seconds": 56.344,
+          "action": "Заполнить поле input_minute"
+        },
+        {
+          "elapsed_seconds": 56.516,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 58.907,
+          "action": "Нажать news_description_edit_text"
+        },
+        {
+          "elapsed_seconds": 59.282,
+          "action": "Заполнить поле news_description_edit_text"
+        },
+        {
+          "elapsed_seconds": 59.453,
+          "action": "Нажать news_save_button"
+        },
+        {
+          "elapsed_seconds": 101.907,
+          "action": "Нажать news_item_delete_image_view"
+        },
+        {
+          "elapsed_seconds": 104.344,
+          "action": "Нажать button1"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/repeat-category-open.png",
+        "docs/evidence/manual-run/news-created-comparison.png",
+        "docs/evidence/manual-run/news-deleted-comparison.png"
+      ],
+      "repeated_after_preparation": true
+    },
+    {
+      "case_id": "TC-036",
+      "name": "Дата создания собственной новости равна текущей дате",
+      "related_test_method": "NewsRegressionTests.creationDateEqualsToday",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:32:03.191259+00:00",
+      "finished_at_utc": "2026-10-22T13:33:22.038577+00:00",
+      "monotonic_start_seconds": 547562.609,
+      "monotonic_end_seconds": 547641.453,
+      "duration_seconds": 78.844,
+      "status": "failed",
+      "observation": "BUG-001: дата создания 22.08.58777 вместо 22.10.2026; собственная новость удалена после фиксации",
+      "steps": [
+        {
+          "elapsed_seconds": 0.109,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 2.469,
+          "action": "Нажать Log out"
+        },
+        {
+          "elapsed_seconds": 4.781,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.094,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.25,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.609,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.781,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 9.094,
+          "action": "Нажать main_menu_image_button"
+        },
+        {
+          "elapsed_seconds": 11.484,
+          "action": "Нажать News"
+        },
+        {
+          "elapsed_seconds": 13.969,
+          "action": "Нажать news_edit_button"
+        },
+        {
+          "elapsed_seconds": 26.672,
+          "action": "Нажать add_news_image_view"
+        },
+        {
+          "elapsed_seconds": 28.922,
+          "action": "Нажать text_input_end_icon"
+        },
+        {
+          "elapsed_seconds": 30.016,
+          "action": "Нажать координаты 400,700"
+        },
+        {
+          "elapsed_seconds": 32.344,
+          "action": "Нажать news_title_edit_text"
+        },
+        {
+          "elapsed_seconds": 33.625,
+          "action": "Заполнить поле news_title_edit_text"
+        },
+        {
+          "elapsed_seconds": 33.766,
+          "action": "Нажать news_publish_date_edit_text"
+        },
+        {
+          "elapsed_seconds": 36.156,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 38.484,
+          "action": "Нажать news_publish_time_edit_text"
+        },
+        {
+          "elapsed_seconds": 52.422,
+          "action": "Нажать toggle_mode"
+        },
+        {
+          "elapsed_seconds": 54.906,
+          "action": "Нажать input_hour"
+        },
+        {
+          "elapsed_seconds": 55.297,
+          "action": "Заполнить поле input_hour"
+        },
+        {
+          "elapsed_seconds": 55.531,
+          "action": "Нажать input_minute"
+        },
+        {
+          "elapsed_seconds": 55.953,
+          "action": "Заполнить поле input_minute"
+        },
+        {
+          "elapsed_seconds": 56.172,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 58.516,
+          "action": "Нажать news_description_edit_text"
+        },
+        {
+          "elapsed_seconds": 58.922,
+          "action": "Заполнить поле news_description_edit_text"
+        },
+        {
+          "elapsed_seconds": 59.062,
+          "action": "Нажать news_save_button"
+        },
+        {
+          "elapsed_seconds": 73.578,
+          "action": "Ожидалась Creation date 22.10.2026 по сегодняшней дате календаря, фактически у собственной новости 22.08.58777; BUG-001"
+        },
+        {
+          "elapsed_seconds": 73.672,
+          "action": "Нажать news_item_delete_image_view"
+        },
+        {
+          "elapsed_seconds": 76.0,
+          "action": "Нажать button1"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/regression-category-open.png",
+        "docs/evidence/manual-run/creation-date-defect.png",
+        "docs/evidence/manual-run/regression-news-deleted.png"
+      ],
+      "repeated_after_preparation": false
+    }
+  ],
+  "canonical_total_seconds": 302.344,
+  "canonical_statuses": {
+    "passed": 7,
+    "failed": 1
+  },
+  "exploratory_attempts": [
+    {
+      "case_id": "TC-002",
+      "name": "Успешная авторизация",
+      "related_test_method": "AuthTests.validCredentialsOpenMainScreen",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:21:12.329392+00:00",
+      "finished_at_utc": "2026-10-22T13:24:12.723797+00:00",
+      "monotonic_start_seconds": 546911.75,
+      "monotonic_end_seconds": 547092.14,
+      "duration_seconds": 180.39,
+      "status": "passed",
+      "observation": "После ввода корректных данных открыт главный экран",
+      "steps": [
+        {
+          "elapsed_seconds": 0.125,
+          "action": "Открыть приложение"
+        },
+        {
+          "elapsed_seconds": 18.984,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 163.625,
+          "action": "При подготовке устранена ошибка чтения временного журнала; затраченное время сохранено в замере"
+        },
+        {
+          "elapsed_seconds": 163.734,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 164.031,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 164.312,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 170.406,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 170.812,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 170.984,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 171.421,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 171.593,
+          "action": "Нажать enter_button"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/auth-valid.png"
+      ],
+      "excluded_from_comparison": true,
+      "reason": "Подготовительная попытка: исправление чтения временного журнала и передачи аргументов; время сохранено полностью."
+    },
+    {
+      "case_id": "TC-041",
+      "name": "Создание и удаление собственной новости",
+      "related_test_method": "NewsTests.newNewsItemAppearsInControlPanel",
+      "attempt": 1,
+      "started_at_utc": "2026-10-22T13:26:05.275367+00:00",
+      "finished_at_utc": "2026-10-22T13:32:03.123578+00:00",
+      "monotonic_start_seconds": 547204.687,
+      "monotonic_end_seconds": 547562.531,
+      "duration_seconds": 357.844,
+      "status": "passed",
+      "observation": "Собственная уникальная новость создана, видна в Control panel и удалена через подтверждение",
+      "steps": [
+        {
+          "elapsed_seconds": 0.109,
+          "action": "Нажать authorization_image_button"
+        },
+        {
+          "elapsed_seconds": 2.406,
+          "action": "Нажать Log out"
+        },
+        {
+          "elapsed_seconds": 4.703,
+          "action": "Нажать login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.266,
+          "action": "Заполнить поле login_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.453,
+          "action": "Нажать password_edit_text"
+        },
+        {
+          "elapsed_seconds": 5.938,
+          "action": "Заполнить поле password_edit_text"
+        },
+        {
+          "elapsed_seconds": 6.094,
+          "action": "Нажать enter_button"
+        },
+        {
+          "elapsed_seconds": 8.484,
+          "action": "Нажать main_menu_image_button"
+        },
+        {
+          "elapsed_seconds": 10.797,
+          "action": "Нажать News"
+        },
+        {
+          "elapsed_seconds": 13.156,
+          "action": "Нажать news_edit_button"
+        },
+        {
+          "elapsed_seconds": 20.625,
+          "action": "Нажать add_news_image_view"
+        },
+        {
+          "elapsed_seconds": 23.156,
+          "action": "Нажать text_input_end_icon"
+        },
+        {
+          "elapsed_seconds": 173.141,
+          "action": "Нажать news_category_auto_complete"
+        },
+        {
+          "elapsed_seconds": 190.922,
+          "action": "Нажать text_input_end_icon"
+        },
+        {
+          "elapsed_seconds": 207.0,
+          "action": "Нажать координаты 945,539"
+        },
+        {
+          "elapsed_seconds": 231.5,
+          "action": "Нажать news_cancel_button"
+        },
+        {
+          "elapsed_seconds": 242.719,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 245.234,
+          "action": "Нажать add_news_image_view"
+        },
+        {
+          "elapsed_seconds": 247.5,
+          "action": "Нажать text_input_end_icon"
+        },
+        {
+          "elapsed_seconds": 263.469,
+          "action": "Нажать text_input_end_icon"
+        },
+        {
+          "elapsed_seconds": 263.641,
+          "action": "Нажать координаты 400,700"
+        },
+        {
+          "elapsed_seconds": 291.328,
+          "action": "Нажать координаты 943,538"
+        },
+        {
+          "elapsed_seconds": 308.516,
+          "action": "Нажать координаты 400,700"
+        },
+        {
+          "elapsed_seconds": 310.953,
+          "action": "Нажать news_title_edit_text"
+        },
+        {
+          "elapsed_seconds": 312.156,
+          "action": "Заполнить поле news_title_edit_text"
+        },
+        {
+          "elapsed_seconds": 312.281,
+          "action": "Нажать news_publish_date_edit_text"
+        },
+        {
+          "elapsed_seconds": 314.688,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 317.016,
+          "action": "Нажать news_publish_time_edit_text"
+        },
+        {
+          "elapsed_seconds": 330.969,
+          "action": "Нажать toggle_mode"
+        },
+        {
+          "elapsed_seconds": 337.453,
+          "action": "Нажать input_hour"
+        },
+        {
+          "elapsed_seconds": 337.766,
+          "action": "Заполнить поле input_hour"
+        },
+        {
+          "elapsed_seconds": 338.063,
+          "action": "Нажать input_minute"
+        },
+        {
+          "elapsed_seconds": 338.438,
+          "action": "Заполнить поле input_minute"
+        },
+        {
+          "elapsed_seconds": 338.688,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 341.047,
+          "action": "Нажать news_description_edit_text"
+        },
+        {
+          "elapsed_seconds": 341.609,
+          "action": "Заполнить поле news_description_edit_text"
+        },
+        {
+          "elapsed_seconds": 341.813,
+          "action": "Нажать news_save_button"
+        },
+        {
+          "elapsed_seconds": 352.406,
+          "action": "Нажать news_item_delete_image_view"
+        },
+        {
+          "elapsed_seconds": 355.047,
+          "action": "Нажать button1"
+        },
+        {
+          "elapsed_seconds": 357.781,
+          "action": "Удалена только новость QA_DIPLOMA_MANUAL_8c5bd757-cc4e-4140-8344-473fc2be9759; после удаления видны прежние карточки без нее"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/manual-run/create-category.png",
+        "docs/evidence/manual-run/category-popup.png",
+        "docs/evidence/manual-run/category-popup-open.png",
+        "docs/evidence/manual-run/news-created.png",
+        "docs/evidence/manual-run/own-delete-confirm.png",
+        "docs/evidence/manual-run/news-deleted.png"
+      ],
+      "excluded_from_comparison": true,
+      "reason": "Исследовательская попытка: проверка раскрытия списка Category, просмотр снимков и повторное открытие формы; время сохранено полностью."
+    }
+  ],
+  "exploratory_total_seconds": 538.234,
+  "cleanup": {
+    "created_own_news_count": 3,
+    "deleted_own_news_count": 3,
+    "confirmed_via_ui": true,
+    "news_prefix": "QA_DIPLOMA_MANUAL_",
+    "remaining_own_news": 0
+  }
+}

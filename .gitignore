@@ -52,3 +52,9 @@ captures/
 
 ### Gradle ###
 !gradle/wrapper/gradle-wrapper.jar
+!/allure-results.zip
+/allure-results/
+/allure-report/
+/qa-local.properties
+__pycache__/
+*.py[cod]

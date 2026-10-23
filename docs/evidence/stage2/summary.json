@@ -1,0 +1,53 @@
+{
+  "created_utc": "2026-10-22T13:37:10.694193+00:00",
+  "device_api": 36,
+  "gradle_exit_code": 1,
+  "run_wall_seconds": 83.578,
+  "total": 8,
+  "statuses": {
+    "failed": 1,
+    "passed": 7
+  },
+  "tests": [
+    {
+      "name": "creationDateEqualsToday",
+      "status": "failed",
+      "duration_ms": 13568
+    },
+    {
+      "name": "validCredentialsOpenMainScreen",
+      "status": "passed",
+      "duration_ms": 4906
+    },
+    {
+      "name": "firstQuoteCanBeExpandedAndCollapsed",
+      "status": "passed",
+      "duration_ms": 7853
+    },
+    {
+      "name": "emptyCredentialsRemainOnAuthorizationScreen",
+      "status": "passed",
+      "duration_ms": 4124
+    },
+    {
+      "name": "logoutReturnsToAuthorization",
+      "status": "passed",
+      "duration_ms": 9424
+    },
+    {
+      "name": "missionContainsEightQuotes",
+      "status": "passed",
+      "duration_ms": 6495
+    },
+    {
+      "name": "newNewsItemAppearsInControlPanel",
+      "status": "passed",
+      "duration_ms": 13933
+    },
+    {
+      "name": "incompleteDateRangeIsRejected",
+      "status": "passed",
+      "duration_ms": 9305
+    }
+  ]
+}

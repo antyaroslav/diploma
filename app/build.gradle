@@ -7,6 +7,10 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+def qaProperties = new Properties()
+def qaFile = rootProject.file('qa-local.properties')
+if (qaFile.exists()) qaFile.withInputStream { qaProperties.load(it) }
+
 android {
     namespace 'ru.edu.qamid'
     compileSdk = 36
@@ -18,7 +22,11 @@ android {
         versionCode 14
         versionName "1.0.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "io.qameta.allure.android.runners.AllureAndroidJUnitRunner"
+        def qaLogin = System.getenv('QA_LOGIN') ?: qaProperties.getProperty('qaLogin')
+        def qaPassword = System.getenv('QA_PASSWORD') ?: qaProperties.getProperty('qaPassword')
+        if (qaLogin) testInstrumentationRunnerArguments['qaLogin'] = qaLogin
+        if (qaPassword) testInstrumentationRunnerArguments['qaPassword'] = qaPassword
     }
 
     compileOptions {
@@ -49,6 +57,10 @@ android {
 }
 
 dependencies {
+    androidTestImplementation "io.qameta.allure:allure-kotlin-model:2.4.0"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-commons:2.4.0"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-junit4:2.4.0"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-android:2.4.0"
     def retrofit_version = "3.0.0"
     def okhttp_logging_version = "4.12.0"
     def fragment_version = "1.8.9"
