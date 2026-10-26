@@ -12,6 +12,9 @@ def qaFile = rootProject.file('qa-local.properties')
 if (qaFile.exists()) qaFile.withInputStream { qaProperties.load(it) }
 
 android {
+    testOptions {
+        animationsDisabled = true
+    }
     namespace 'ru.edu.qamid'
     compileSdk = 36
 

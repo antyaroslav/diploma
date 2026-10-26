@@ -1,0 +1,15 @@
+{
+  "device_api": "36",
+  "android_release": "16",
+  "abi": "x86_64",
+  "device_timezone": "GMT",
+  "device_locale": "en-US",
+  "screen_size": "Physical size: 1080x2400",
+  "observed_device_time": "2026-10-26T19:22:24Z",
+  "application_id": "ru.edu.qamid",
+  "application_version": "1.0.0 (14)",
+  "gradle_wrapper": "8.13",
+  "android_gradle_plugin": "8.12.2",
+  "test_theme_control": "AppCompatDelegate per test; original mode restored after each test",
+  "resource_configuration": "config: mcc310-mnc260-en-rUS-ldltr-sw411dp-w411dp-h914dp-normal-long-notround-nowidecg-lowdr-port-notnight-420dpi-finger-keysexposed-qwerty-navhidden-nonav-2400x1080-v36"
+}

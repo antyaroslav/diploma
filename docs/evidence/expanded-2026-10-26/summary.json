@@ -1,0 +1,173 @@
+{
+  "created_utc": "2026-10-26T19:20:51.831805+00:00",
+  "device_api": 36,
+  "gradle_exit_code": 1,
+  "run_wall_seconds": 292.625,
+  "total": 32,
+  "statuses": {
+    "passed": 27,
+    "failed": 5
+  },
+  "tests": [
+    {
+      "name": "missionBackReturnsToMain",
+      "status": "passed",
+      "duration_ms": 4516
+    },
+    {
+      "name": "cancelledCreationDoesNotCreateNews",
+      "status": "passed",
+      "duration_ms": 10310
+    },
+    {
+      "name": "incompleteDateRangeIsRejected",
+      "status": "passed",
+      "duration_ms": 7450
+    },
+    {
+      "name": "validCredentialsOpenMainScreen",
+      "status": "passed",
+      "duration_ms": 3863
+    },
+    {
+      "name": "emptyCredentialsRemainOnAuthorizationScreen",
+      "status": "passed",
+      "duration_ms": 3776
+    },
+    {
+      "name": "cancelledDeletionPreservesNews",
+      "status": "passed",
+      "duration_ms": 11902
+    },
+    {
+      "name": "panelMenuOpensMain",
+      "status": "passed",
+      "duration_ms": 6186
+    },
+    {
+      "name": "logoutReturnsToAuthorization",
+      "status": "passed",
+      "duration_ms": 7682
+    },
+    {
+      "name": "missionMenuOpensNews",
+      "status": "passed",
+      "duration_ms": 4838
+    },
+    {
+      "name": "firstQuoteCanBeExpandedAndCollapsed",
+      "status": "passed",
+      "duration_ms": 5258
+    },
+    {
+      "name": "publishedNewsRemainsAfterSectionNavigation",
+      "status": "failed",
+      "duration_ms": 30172
+    },
+    {
+      "name": "confirmedDeletionRemovesNewsAfterReload",
+      "status": "passed",
+      "duration_ms": 10693
+    },
+    {
+      "name": "activityChangesPersistAfterReload",
+      "status": "passed",
+      "duration_ms": 13841
+    },
+    {
+      "name": "allNewsShortcutOpensNews",
+      "status": "passed",
+      "duration_ms": 4796
+    },
+    {
+      "name": "cancelledEditPreservesOriginalFields",
+      "status": "passed",
+      "duration_ms": 12605
+    },
+    {
+      "name": "dismissedCancellationKeepsDraft",
+      "status": "passed",
+      "duration_ms": 12971
+    },
+    {
+      "name": "editedTitlePersistsAfterReload",
+      "status": "passed",
+      "duration_ms": 12349
+    },
+    {
+      "name": "loginFieldHasReadableContrastInNightMode",
+      "status": "failed",
+      "duration_ms": 4909
+    },
+    {
+      "name": "panelLogoutReturnsToAuthorization",
+      "status": "passed",
+      "duration_ms": 6251
+    },
+    {
+      "name": "newsMenuReturnsToMain",
+      "status": "passed",
+      "duration_ms": 6005
+    },
+    {
+      "name": "unchangedTimePickerPreservesSavedTime",
+      "status": "failed",
+      "duration_ms": 11110
+    },
+    {
+      "name": "clearingEmptyFilterHidesEmptyMessage",
+      "status": "passed",
+      "duration_ms": 8462
+    },
+    {
+      "name": "validCredentialsAuthorizeInNightMode",
+      "status": "passed",
+      "duration_ms": 4901
+    },
+    {
+      "name": "missionContainsEightQuotes",
+      "status": "passed",
+      "duration_ms": 4932
+    },
+    {
+      "name": "unchangedDatePickerPreservesSavedDate",
+      "status": "failed",
+      "duration_ms": 11225
+    },
+    {
+      "name": "missionLogoutReturnsToAuthorization",
+      "status": "passed",
+      "duration_ms": 5478
+    },
+    {
+      "name": "editedFieldsPersistAfterReload",
+      "status": "passed",
+      "duration_ms": 15056
+    },
+    {
+      "name": "newNewsItemAppearsInControlPanel",
+      "status": "passed",
+      "duration_ms": 9650
+    },
+    {
+      "name": "panelMenuOpensNews",
+      "status": "passed",
+      "duration_ms": 6259
+    },
+    {
+      "name": "panelBackReturnsToNews",
+      "status": "passed",
+      "duration_ms": 5322
+    },
+    {
+      "name": "creationDateEqualsToday",
+      "status": "failed",
+      "duration_ms": 9986
+    },
+    {
+      "name": "newsLogoutReturnsToAuthorization",
+      "status": "passed",
+      "duration_ms": 5847
+    }
+  ]
+}

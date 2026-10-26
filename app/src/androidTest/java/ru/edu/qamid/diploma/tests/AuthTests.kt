@@ -1,13 +1,14 @@
-package ru.edu.qamid.diploma
+package ru.edu.qamid.diploma.tests
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.qameta.allure.kotlin.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import ru.edu.qamid.diploma.pages.*
+import ru.edu.qamid.diploma.support.BaseUiTest
 
 @RunWith(AndroidJUnit4::class)
-@Feature("Authorization")
+@Feature("Authorization") @Story("Session boundaries") @Severity(SeverityLevel.CRITICAL)
 class AuthTests : BaseUiTest() {
     @Test @Description("TC-002: valid credentials open the main screen")
     fun validCredentialsOpenMainScreen() { login(); MainPage.assertOpen() }
@@ -16,5 +17,5 @@ class AuthTests : BaseUiTest() {
     fun emptyCredentialsRemainOnAuthorizationScreen() { AuthPage.submitEmpty() }
 
     @Test @Description("TC-014: logout returns to authorization")
-    fun logoutReturnsToAuthorization() { login(); MainPage.logout(); AuthPage.assertOpen() }
+    fun logoutReturnsToAuthorization() { login(); AppMenu.logout(); AuthPage.assertOpen() }
 }

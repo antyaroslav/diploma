@@ -193,7 +193,10 @@ def export_results(adb, serial, run_dir, elapsed, test_exit_code, secrets=()):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--serial", help="ADB serial; optional when exactly one device is connected")
+    parser.add_argument("--class", dest="test_class", help="Optional fully qualified test class, optionally #method")
     args = parser.parse_args()
+    if args.test_class and not re.fullmatch(r"ru\.edu\.qamid\.diploma\.tests\.[A-Za-z0-9_]+(?:#[A-Za-z0-9_]+)?", args.test_class):
+        raise RunError("Use a test class from ru.edu.qamid.diploma.tests, optionally followed by #method.")
     secrets = check_credentials()
     adb = find_adb()
     serial = choose_device(adb, args.serial or os.environ.get("ANDROID_SERIAL"))
@@ -213,7 +216,9 @@ def main():
     clear_previous_results(adb, serial)
     command = [str(wrapper), "connectedDebugAndroidTest", "--console=plain",
                "-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true",
-               "-Pandroid.testInstrumentationRunnerArguments.package=ru.edu.qamid.diploma"]
+               "-Pandroid.testInstrumentationRunnerArguments.package=ru.edu.qamid.diploma.tests"]
+    if args.test_class:
+        command.append("-Pandroid.testInstrumentationRunnerArguments.class=" + args.test_class)
     # subprocess uses Windows command-line quoting for the .bat wrapper path.
     start = time.monotonic()
     exit_code = 1
